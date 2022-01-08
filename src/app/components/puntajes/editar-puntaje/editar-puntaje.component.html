@@ -1,0 +1,143 @@
+<div class="center" *ngIf="loading">
+  <mat-spinner diameter="50" class="spinner"></mat-spinner>
+</div>
+
+<div [hidden]="loading">
+  <h2 mat-dialog-title>
+    Editar Puntaje <strong>#{{ data.idPuntaje }}</strong>
+  </h2>
+  <mat-dialog-content class="mat-typography">
+    <div class="container mw-600">
+      <form [formGroup]="form">
+        <mat-grid-list cols="2" rowHeight="70px">
+          <mat-grid-tile colspan="1" rowspan="1">
+            <mat-form-field appearance="fill" class="ancho">
+              <mat-label>Nombre:</mat-label>
+              <input
+                matInput
+                formControlName="nombreAlumno"
+                [(ngModel)]="data.nombreAlumno"
+                readonly
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="ancho">
+              <mat-label>Apellido:</mat-label>
+              <input
+                matInput
+                formControlName="apellidoAlumno"
+                [(ngModel)]="data.apellidoAlumno"
+                readonly
+              />
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="5"
+            ><img
+              src="../../../../assets/img/puntaje.png"
+              alt="puntaje-img"
+              class="image"
+          /></mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1"></mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1"
+            ><mat-form-field appearance="fill" class="ancho">
+              <mat-label>Nombre:</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                formControlName="nombreProfesor"
+                [(ngModel)]="data.nombreProfesor"
+                readonly
+              /> </mat-form-field
+            ><mat-form-field appearance="fill" class="ancho">
+              <mat-label>Apellido:</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                formControlName="apellidoProfesor"
+                [(ngModel)]="data.apellidoProfesor"
+                readonly
+              />
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile colspan="1" rowspan="1"
+            ><mat-form-field appearance="fill" class="ancho">
+              <mat-label>Tema:</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                formControlName="tema"
+                [(ngModel)]="data.tema"
+                readonly
+              /> </mat-form-field
+          ></mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1">
+            <mat-form-field appearance="fill" class="ancho">
+              <mat-label>Interés:</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                formControlName="interes"
+                [(ngModel)]="data.interes"
+              />
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1">
+            <mat-form-field appearance="fill" class="ancho">
+              <mat-label>Complejidad:</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                formControlName="complejidad"
+                [(ngModel)]="data.complejidad"
+              />
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1">
+            <mat-form-field appearance="fill" class="ancho">
+              <mat-label>Entendimiento:</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                formControlName="entendimiento"
+                [(ngModel)]="data.entendimiento"
+              />
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1">
+            <mat-form-field appearance="fill" class="ancho">
+              <mat-label>Valoración:</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                formControlName="valoracion"
+                [(ngModel)]="data.valoracion"
+              />
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1">
+            <mat-form-field appearance="fill" class="ancho">
+              <mat-label>Observaciones:</mat-label>
+              <textarea
+                matInput
+                autocomplete="off"
+                formControlName="observaciones"
+                [(ngModel)]="data.observaciones"
+              ></textarea>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </form>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button
+      mat-button
+      [mat-dialog-close]="true"
+      cdkFocusInitial
+      [disabled]="!form.valid"
+    >
+      Aceptar
+    </button>
+  </mat-dialog-actions>
+</div>

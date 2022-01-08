@@ -1,0 +1,89 @@
+<div class="center" *ngIf="loading">
+  <mat-spinner diameter="50" class="spinner"></mat-spinner>
+</div>
+
+<div [hidden]="loading">
+  <h2 mat-dialog-title>
+    Editar Profesor <strong>#{{ data.idProfesor }}</strong>
+  </h2>
+  <mat-dialog-content class="mat-typography">
+    <div class="container mw-600">
+      <form [formGroup]="form">
+        <mat-grid-list cols="2" rowHeight="70px">
+          <mat-grid-tile colspan="1" rowspan="1"
+            ><mat-form-field appearance="fill" class="ancho">
+              <mat-label>CUIL</mat-label>
+              <input
+                matInput
+                formControlName="cuil"
+                [(ngModel)]="data.cuil"
+                readonly
+              /> </mat-form-field
+          ></mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="5"
+            ><img
+              src="../../../../assets/img/profesor.png"
+              alt="profesor-img"
+              class="image"
+          /></mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1"
+            ><mat-form-field appearance="fill" class="ancho">
+              <mat-label>Nombre</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                formControlName="nombre"
+                [(ngModel)]="data.nombre"
+              /> </mat-form-field
+          ></mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1"
+            ><mat-form-field appearance="fill" class="ancho">
+              <mat-label>Apellido</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                formControlName="apellido"
+                [(ngModel)]="data.apellido"
+              /> </mat-form-field
+          ></mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1"
+            ><mat-form-field appearance="fill" class="ancho">
+              <mat-label>Edad</mat-label>
+              <input
+                matInput
+                type="number"
+                autocomplete="off"
+                formControlName="edad"
+                [(ngModel)]="data.edad"
+              /> </mat-form-field
+          ></mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1">
+            <mat-form-field appearance="fill" class="ancho">
+              <mat-label>Cargo</mat-label>
+              <mat-select formControlName="cargo" [(ngModel)]="data.idCargo">
+                <mat-option
+                  *ngFor="let cargo of cargos"
+                  [value]="cargo.idCargo"
+                >
+                  {{ cargo.nombre }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </form>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button
+      mat-button
+      [mat-dialog-close]="true"
+      cdkFocusInitial
+      [disabled]="!form.valid"
+      (click)="editarProfesor()"
+    >
+      Aceptar
+    </button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,38 @@
+<div class="center" *ngIf="loading">
+  <mat-spinner diameter="50" class="spinner"></mat-spinner>
+</div>
+
+<div [hidden]="loading">
+  <mat-toolbar class="mt-60">Temas</mat-toolbar>
+
+  <div class="container">
+    <mat-grid-list cols="3" gutterSize="20px" rowHeight="fit">
+      <mat-grid-tile *ngFor="let tema of temas">
+        <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title>{{ tema.nombre }}</mat-card-title>
+            <mat-card-subtitle
+              ><i>Duración: {{ tema.duracion }} hs</i></mat-card-subtitle
+            >
+          </mat-card-header>
+          <div class="image-container">
+            <img
+              mat-card-image
+              src="{{ tema.imagen }}"
+              alt="{{ tema.nombre }}-logo"
+              class="body-image"
+            />
+          </div>
+          <mat-card-content>
+            {{ tema.descripcion }}
+          </mat-card-content>
+          <mat-card-actions>
+            <a href="{{ tema.informacion }}" target="_blank">
+              <button mat-button>+ info</button>
+            </a>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<mat-toolbar class="mt-60 header">
+  <div class="section">
+    <h1 class="title-h1">Capacitación CIDS 2021</h1>
+    <h2 class="title-h2">Área de Desarollo</h2>
+  </div>
+</mat-toolbar>
+
+<div class="container">
+  <div class="homepage-main">
+    <div class="homepage-row">
+      <div class="homepage-row-column">
+        <h3>Entidades principales</h3>
+        <p>
+          La aplicación hace uso de un ABMC para gestionar los
+          <strong>Alumnos</strong> y <strong>Profesores</strong> que forman
+          parte de la capacitación.
+        </p>
+        <p>
+          Las funcionalidades son iguales para ambas entidades y se utiliza una
+          tabla para visualizarlas.
+        </p>
+      </div>
+      <div class="homepage-row-column">
+        <h3>Entidades secundarias</h3>
+        <p>
+          Las <strong>Reparticiones</strong> y los <strong>Temas</strong> son
+          entidades que aportan algo más de información, pero no son
+          indispensables.
+        </p>
+        <p>
+          Generalmente, se trata de entidades poco cambiantes y con pocos
+          registros en la base de datos.
+        </p>
+      </div>
+      <div class="homepage-row-column">
+        <h3>Entidad vinculante</h3>
+        <p>
+          Los <strong>Puntajes</strong> relacionan una única combinación de
+          Alumno, Profesor y Tema.
+        </p>
+        <p>
+          Es una entidad que vincula mucha información de muchas otras
+          entidades.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="carousel">
+    <div class="carousel-title">
+      <h3>Front-End</h3>
+    </div>
+    <div class="image-row">
+      <div *ngFor="let elem of frontEnd" class="image-text-container">
+        <div class="image-container">
+          <img
+            mat-card-image
+            src="{{ elem.imagen }}"
+            alt="{{ elem.nombre }}-logo"
+            class="body-image"
+          />
+        </div>
+        <div>
+          <i>{{ elem.nombre }}</i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="carousel">
+    <div class="carousel-title">
+      <h3>Back-End</h3>
+    </div>
+    <div class="image-row">
+      <div *ngFor="let elem of backEnd" class="image-text-container">
+        <div class="image-container">
+          <img
+            mat-card-image
+            src="{{ elem.imagen }}"
+            alt="{{ elem.nombre }}-logo"
+            class="body-image"
+          />
+        </div>
+        <div>
+          <i>{{ elem.nombre }}</i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

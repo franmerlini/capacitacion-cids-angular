@@ -1,0 +1,21 @@
+.ancho {
+  width: 100%;
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
+
+.justify-content-right {
+  display: flex;
+  justify-content: right;
+}
+
+.mw-600 {
+  max-width: 600px;
+}

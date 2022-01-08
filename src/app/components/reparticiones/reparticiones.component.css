@@ -1,0 +1,15 @@
+.card {
+  max-width: 300px;
+  border: 1px solid #424242;
+}
+
+.image-container {
+  height: 200px;
+  width: 100%;
+}
+
+.body-image {
+  height: 100%;
+  width: calc(100% +32px);
+  object-fit: fill;
+}

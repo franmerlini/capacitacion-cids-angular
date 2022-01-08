@@ -1,0 +1,18 @@
+[
+  {
+    "nombre": "NodeJS",
+    "imagen": "../assets/img/nodejs.png"
+  },
+  {
+    "nombre": "TypeORM",
+    "imagen": "../assets/img/typeorm.png"
+  },
+  {
+    "nombre": "MySQL",
+    "imagen": "../assets/img/mysql.png"
+  },
+  {
+    "nombre": "ExpressJS",
+    "imagen": "../assets/img/express.png"
+  }
+]

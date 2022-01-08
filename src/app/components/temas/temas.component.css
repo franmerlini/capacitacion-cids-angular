@@ -1,0 +1,29 @@
+.card {
+  max-width: 450px;
+  border: 1px solid #424242;
+}
+
+.image-container {
+  height: 200px;
+  width: 100%;
+}
+
+.body-image {
+  height: 100%;
+  width: calc(100% +32px);
+  background-color: #fff;
+  object-fit: scale-down;
+}
+
+mat-grid-list {
+  height: 1000px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+mat-card-header {
+  margin-bottom: 10px;
+}

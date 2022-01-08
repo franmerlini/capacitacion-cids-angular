@@ -1,0 +1,15 @@
+<div class="center" *ngIf="loading">
+  <mat-spinner diameter="50" class="spinner"></mat-spinner>
+</div>
+
+<div [hidden]="loading">
+  <div mat-dialog-content>
+    <p>{{ data.msg }}</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No</button>
+    <button mat-button cdkFocusInitial (click)="eliminarAlumno(data.cuil)">
+      Sí
+    </button>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+table {
+  width: 100%;
+}
+
+th {
+  width: 16.6%;
+}
+
+.ta-right {
+  text-align: right;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+section {
+  display: table;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

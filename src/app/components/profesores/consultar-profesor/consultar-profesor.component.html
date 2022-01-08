@@ -1,0 +1,58 @@
+<h2 mat-dialog-title>
+  Profesor <strong># {{ data.idProfesor }}</strong>
+</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="container mw-500">
+    <mat-grid-list cols="2" rowHeight="70px">
+      <mat-grid-tile colspan="1" rowspan="5"
+        ><img
+          src="../../../../assets/img/profesor.png"
+          alt="profesor-img"
+          class="image"
+      /></mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <div class="mat-grid-tile-content">
+          <div class="label">Nombre:</div>
+          <div>
+            {{ data.nombre }}
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <div class="mat-grid-tile-content">
+          <div class="label">Apellido:</div>
+          <div>
+            {{ data.apellido }}
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <div class="mat-grid-tile-content">
+          <div class="label">CUIL:</div>
+          <div>
+            {{ data.cuil }}
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <div class="mat-grid-tile-content">
+          <div class="label">Edad:</div>
+          <div>
+            {{ data.edad }}
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <div class="mat-grid-tile-content">
+          <div class="label">Cargo:</div>
+          <div>
+            {{ data.cargo }}
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>

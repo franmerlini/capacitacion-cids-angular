@@ -1,0 +1,18 @@
+.image {
+  width: 150px;
+  height: 150px;
+}
+
+.mw-500 {
+  max-width: 500px;
+}
+
+.mat-grid-tile-content {
+  justify-content: left;
+}
+
+.label {
+  width: 100px;
+  font-weight: bold;
+  text-decoration: underline;
+}

@@ -1,0 +1,82 @@
+<h2 mat-dialog-title>
+  Puntaje <strong># {{ data.idPuntaje }}</strong>
+</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="container mw-500">
+    <mat-grid-list cols="2" rowHeight="70px">
+      <mat-grid-tile colspan="1" rowspan="8"
+        ><img
+          src="../../../../assets/img/puntaje.png"
+          alt="puntaje-img"
+          class="image"
+      /></mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <div class="mat-grid-tile-content">
+          <div class="label">Alumno:</div>
+          <div>{{ data.apellidoAlumno }}, {{ data.nombreAlumno }}</div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <div class="mat-grid-tile-content">
+          <div class="label">Profesor:</div>
+          <div>{{ data.apellidoProfesor }}, {{ data.nombreProfesor }}</div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <div class="mat-grid-tile-content">
+          <div class="label">Tema:</div>
+          <div>
+            {{ data.tema }}
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <div class="mat-grid-tile-content">
+          <div class="label">Interés:</div>
+          <mat-progress-bar
+            mode="determinate"
+            value="{{ data.interes * 10 }}"
+          ></mat-progress-bar>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <div class="mat-grid-tile-content">
+          <div class="label">Complejidad:</div>
+          <mat-progress-bar
+            mode="determinate"
+            value="{{ data.complejidad * 10 }}"
+          ></mat-progress-bar>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <div class="mat-grid-tile-content">
+          <div class="label">Entendimiento:</div>
+          <mat-progress-bar
+            mode="determinate"
+            value="{{ data.entendimiento * 10 }}"
+          ></mat-progress-bar>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <div class="mat-grid-tile-content">
+          <div class="label">Valoración:</div>
+          <mat-progress-bar
+            mode="determinate"
+            value="{{ data.valoracion * 10 }}"
+          ></mat-progress-bar>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <div class="mat-grid-tile-content">
+          <div class="label">Observaciones:</div>
+          <div>
+            {{ data.observaciones }}
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>
