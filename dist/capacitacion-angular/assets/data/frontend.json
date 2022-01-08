@@ -1,0 +1,10 @@
+[
+  {
+    "nombre": "Angular",
+    "imagen": "../assets/img/angular.png"
+  },
+  {
+    "nombre": "Angular Material",
+    "imagen": "../assets/img/angular-material.svg"
+  }
+]
