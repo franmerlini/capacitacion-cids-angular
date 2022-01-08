@@ -10,6 +10,6 @@
 
 .body-image {
   height: 100%;
-  width: calc(100% +32px);
+  width: calc(100% + 32px);
   object-fit: fill;
 }
