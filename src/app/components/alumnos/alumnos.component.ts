@@ -83,8 +83,6 @@ export class AlumnosComponent implements OnInit {
   }
 
   openDialogEditar(alumno: Alumno): void {
-    console.log(alumno);
-
     const dialogRef = this.dialog.open(EditarAlumnoComponent, {
       data: {
         idAlumno: alumno.idAlumno,
