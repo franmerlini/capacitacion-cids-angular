@@ -67,6 +67,7 @@ export class AlumnosComponent implements OnInit {
     const dialogRef = this.dialog.open(AgregarAlumnoComponent);
 
     dialogRef.afterClosed().subscribe((res) => {
+      this.dataSource._updateChangeSubscription();
       console.log(res);
     });
   }
@@ -78,6 +79,7 @@ export class AlumnosComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
+      this.dataSource._updateChangeSubscription();
       console.log(res);
     });
   }
@@ -95,6 +97,7 @@ export class AlumnosComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
+      this.dataSource._updateChangeSubscription();
       console.log(res);
     });
   }
@@ -112,6 +115,7 @@ export class AlumnosComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
+      this.dataSource._updateChangeSubscription();
       console.log(res);
     });
   }
