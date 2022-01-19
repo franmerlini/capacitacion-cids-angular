@@ -24,7 +24,6 @@ export class AlumnosComponent implements OnInit {
     'apellido',
     'nombre',
     'cuil',
-    'reparticion',
     'acciones',
   ];
   dataSource!: MatTableDataSource<Alumno>;
@@ -67,7 +66,7 @@ export class AlumnosComponent implements OnInit {
     const dialogRef = this.dialog.open(AgregarAlumnoComponent);
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.dataSource._updateChangeSubscription();
+      this.dataSource._updateChangeSubscription;
       console.log(res);
     });
   }

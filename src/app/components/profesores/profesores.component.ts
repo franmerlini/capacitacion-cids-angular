@@ -23,7 +23,6 @@ export class ProfesoresComponent implements OnInit {
     'apellido',
     'nombre',
     'cuil',
-    'cargo',
     'acciones',
   ];
   dataSource!: MatTableDataSource<Profesor>;

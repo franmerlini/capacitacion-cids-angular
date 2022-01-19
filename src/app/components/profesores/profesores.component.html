@@ -40,9 +40,11 @@
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>
           <ng-container matColumnDef="idProfesor">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              <strong>#</strong>
+            </th>
             <td mat-cell *matCellDef="let profesor">
-              {{ profesor.idProfesor }}
+              <strong>{{ profesor.idProfesor }}</strong>
             </td>
           </ng-container>
 
@@ -59,11 +61,6 @@
           <ng-container matColumnDef="cuil">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>CUIL</th>
             <td mat-cell *matCellDef="let profesor">{{ profesor.cuil }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="cargo">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Cargo</th>
-            <td mat-cell *matCellDef="let profesor">{{ profesor.cargo }}</td>
           </ng-container>
 
           <ng-container matColumnDef="acciones">
