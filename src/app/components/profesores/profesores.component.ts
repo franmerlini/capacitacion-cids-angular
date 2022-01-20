@@ -25,7 +25,7 @@ export class ProfesoresComponent implements OnInit {
     'cuil',
     'acciones',
   ];
-  dataSource!: MatTableDataSource<Profesor>;
+  dataSource = new MatTableDataSource<Profesor>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -47,12 +47,32 @@ export class ProfesoresComponent implements OnInit {
   }
 
   cargarProfesores(): void {
-    this.profesoresService.obtenerProfesores().subscribe((res) => {
-      this.dataSource = new MatTableDataSource<Profesor>(res);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+    this.dataSource.data = [];
+    this.profesoresService.obtenerProfesores().subscribe({
+      next: (res) => {
+        this.dataSource.data.push(...res);
+        this.dataSource._updateChangeSubscription();
 
-      this.loading = false;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+  }
+
+  actualizarTabla(): void {
+    this.profesoresService.obtenerProfesores().subscribe({
+      next: (res) => {
+        this.dataSource.data = res;
+        this.dataSource._updateChangeSubscription();
+      },
+      error: (err) => {
+        console.error(err);
+      },
     });
   }
 
@@ -60,6 +80,19 @@ export class ProfesoresComponent implements OnInit {
     const dialogRef = this.dialog.open(AgregarProfesorComponent);
 
     dialogRef.afterClosed().subscribe((res) => {
+      this.actualizarTabla();
+      console.log(res);
+    });
+  }
+
+  openDialogEliminar(cuil: string): void {
+    const dialogRef = this.dialog.open(EliminarProfesorComponent, {
+      width: '250px',
+      data: { msg: '¿Seguro que desea eliminar el registro?', cuil },
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.actualizarTabla();
       console.log(res);
     });
   }
@@ -77,17 +110,7 @@ export class ProfesoresComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      console.log(res);
-    });
-  }
-
-  openDialogEliminar(cuil: string): void {
-    const dialogRef = this.dialog.open(EliminarProfesorComponent, {
-      width: '250px',
-      data: { msg: '¿Seguro que desea eliminar el registro?', cuil },
-    });
-
-    dialogRef.afterClosed().subscribe((res) => {
+      this.actualizarTabla();
       console.log(res);
     });
   }

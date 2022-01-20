@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IProfesor } from 'src/app/interfaces/IProfesor';
 import { Cargo } from 'src/app/models/cargo';
@@ -17,12 +18,13 @@ export class AgregarProfesorComponent implements OnInit {
   cargos!: Cargo[];
   profesor!: Profesor;
   profesorParseado!: IProfesor;
-  loading = false;
+  loading = true;
 
   constructor(
     private fb: FormBuilder,
     private profesoresService: ProfesoresService,
     private snackBar: MatSnackBar,
+    public dialogRef: MatDialogRef<AgregarProfesorComponent>,
     private cargosService: CargosService
   ) {
     this.form = this.fb.group({
@@ -45,6 +47,7 @@ export class AgregarProfesorComponent implements OnInit {
     this.cargosService.obtenerCargos().subscribe({
       next: (res) => {
         this.cargos = res;
+        this.loading = false;
       },
       error: (err) => {
         console.error(err);
@@ -71,6 +74,7 @@ export class AgregarProfesorComponent implements OnInit {
     this.profesoresService.agregarProfesor(this.profesorParseado).subscribe({
       next: (res) => {
         this.loading = false;
+        this.dialogRef.close();
         this.mostrarSnackBar('¡Profesor agregado!');
       },
       error: (err) => {
@@ -98,7 +102,7 @@ export class AgregarProfesorComponent implements OnInit {
     this.snackBar.open(msg, '', {
       duration: 1500,
       horizontalPosition: 'center',
-      verticalPosition: 'bottom',
+      verticalPosition: 'top',
     });
   }
 }

@@ -78,6 +78,7 @@ export class AgregarAlumnoComponent implements OnInit {
         this.mostrarSnackBar('¡Alumno agregado!');
       },
       error: (err) => {
+        this.loading = false;
         console.error(err);
         this.mostrarSnackBar('Ha ocurrido un error...');
       },

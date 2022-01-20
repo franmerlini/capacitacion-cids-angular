@@ -49,7 +49,6 @@ export class EditarProfesorComponent implements OnInit {
     this.cargosService.obtenerCargos().subscribe({
       next: (res) => {
         this.cargos = res;
-
         this.loading = false;
       },
       error: (err) => {
@@ -59,6 +58,8 @@ export class EditarProfesorComponent implements OnInit {
   }
 
   editarProfesor(): void {
+    this.loading = true;
+
     this.profesor = {
       idProfesor: null,
       idPersona: null,
@@ -74,10 +75,12 @@ export class EditarProfesorComponent implements OnInit {
 
     this.profesoresService.editarProfesor(this.profesorParseado).subscribe({
       next: (res) => {
-        console.log(res);
+        this.loading = false;
+        this.dialogRef.close();
         this.mostrarSnackBar('¡Profesor editado!');
       },
       error: (err) => {
+        this.loading = false;
         console.error(err);
         this.mostrarSnackBar('Ha ocurrido un error...');
       },
@@ -101,7 +104,7 @@ export class EditarProfesorComponent implements OnInit {
     this.snackBar.open(msg, '', {
       duration: 1500,
       horizontalPosition: 'center',
-      verticalPosition: 'bottom',
+      verticalPosition: 'top',
     });
   }
 }

@@ -80,6 +80,7 @@ export class EditarAlumnoComponent implements OnInit {
         this.mostrarSnackBar('¡Alumno editado!');
       },
       error: (err) => {
+        this.loading = false;
         console.error(err);
         this.mostrarSnackBar('Ha ocurrido un error...');
       },
