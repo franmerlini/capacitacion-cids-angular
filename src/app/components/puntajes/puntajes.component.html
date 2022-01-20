@@ -40,8 +40,12 @@
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>
           <ng-container matColumnDef="idPuntaje">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
-            <td mat-cell *matCellDef="let puntaje">{{ puntaje.idPuntaje }}</td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              <strong>#</strong>
+            </th>
+            <td mat-cell *matCellDef="let puntaje">
+              <strong>{{ puntaje.idPuntaje }}</strong>
+            </td>
           </ng-container>
 
           <ng-container matColumnDef="alumno">
@@ -110,7 +114,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
 
-        <mat-paginator [pageSizeOptions]="[15, 20, 25]" showFirstLastButtons>
+        <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons>
         </mat-paginator>
       </div>
     </mat-card>

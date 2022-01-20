@@ -49,7 +49,6 @@ export class EditarAlumnoComponent implements OnInit {
     this.reparticionesService.obtenerReparticiones().subscribe({
       next: (res) => {
         this.reparticiones = res;
-
         this.loading = false;
       },
       error: (err) => {
@@ -76,9 +75,9 @@ export class EditarAlumnoComponent implements OnInit {
 
     this.alumnosService.editarAlumno(this.alumnoParseado).subscribe({
       next: (res) => {
-        console.log(res);
-        this.mostrarSnackBar('¡Alumno editado!');
+        this.loading = false;
         this.dialogRef.close();
+        this.mostrarSnackBar('¡Alumno editado!');
       },
       error: (err) => {
         console.error(err);
@@ -104,7 +103,7 @@ export class EditarAlumnoComponent implements OnInit {
     this.snackBar.open(msg, '', {
       duration: 1500,
       horizontalPosition: 'center',
-      verticalPosition: 'bottom',
+      verticalPosition: 'top',
     });
   }
 }

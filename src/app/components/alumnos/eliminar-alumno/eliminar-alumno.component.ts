@@ -36,7 +36,6 @@ export class EliminarAlumnoComponent implements OnInit {
       next: (res) => {
         this.loading = false;
         this.dialogRef.close();
-        console.log(res);
         this.mostrarSnackBar('¡Alumno eliminado!');
       },
       error: (err) => {
@@ -51,7 +50,7 @@ export class EliminarAlumnoComponent implements OnInit {
     this.snackBar.open(msg, '', {
       duration: 1500,
       horizontalPosition: 'center',
-      verticalPosition: 'bottom',
+      verticalPosition: 'top',
     });
   }
 }

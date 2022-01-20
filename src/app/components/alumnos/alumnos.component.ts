@@ -26,7 +26,8 @@ export class AlumnosComponent implements OnInit {
     'cuil',
     'acciones',
   ];
-  dataSource!: MatTableDataSource<Alumno>;
+
+  dataSource = new MatTableDataSource<Alumno>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -48,9 +49,12 @@ export class AlumnosComponent implements OnInit {
   }
 
   cargarAlumnos(): void {
+    this.dataSource.data = [];
     this.alumnosService.obtenerAlumnos().subscribe({
       next: (res) => {
-        this.dataSource = new MatTableDataSource<Alumno>(res);
+        this.dataSource.data.push(...res);
+        this.dataSource._updateChangeSubscription();
+
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
 
@@ -62,11 +66,23 @@ export class AlumnosComponent implements OnInit {
     });
   }
 
+  actualizarTabla(): void {
+    this.alumnosService.obtenerAlumnos().subscribe({
+      next: (res) => {
+        this.dataSource.data = res;
+        this.dataSource._updateChangeSubscription();
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+  }
+
   openDialogAgregar(): void {
     const dialogRef = this.dialog.open(AgregarAlumnoComponent);
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.dataSource._updateChangeSubscription;
+      this.actualizarTabla();
       console.log(res);
     });
   }
@@ -78,7 +94,7 @@ export class AlumnosComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.dataSource._updateChangeSubscription();
+      this.actualizarTabla();
       console.log(res);
     });
   }
@@ -96,7 +112,7 @@ export class AlumnosComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.dataSource._updateChangeSubscription();
+      this.actualizarTabla();
       console.log(res);
     });
   }
@@ -114,7 +130,6 @@ export class AlumnosComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.dataSource._updateChangeSubscription();
       console.log(res);
     });
   }

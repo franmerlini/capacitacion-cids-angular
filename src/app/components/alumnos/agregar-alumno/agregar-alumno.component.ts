@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IAlumno } from 'src/app/interfaces/IAlumno';
 import { Alumno } from 'src/app/models/alumno';
@@ -17,12 +18,13 @@ export class AgregarAlumnoComponent implements OnInit {
   reparticiones!: Reparticion[];
   alumno!: Alumno;
   alumnoParseado!: IAlumno;
-  loading = false;
+  loading = true;
 
   constructor(
     private fb: FormBuilder,
     private alumnosService: AlumnosService,
     private snackBar: MatSnackBar,
+    public dialogRef: MatDialogRef<AgregarAlumnoComponent>,
     private reparticionesService: ReparticionesService
   ) {
     this.form = this.fb.group({
@@ -45,6 +47,7 @@ export class AgregarAlumnoComponent implements OnInit {
     this.reparticionesService.obtenerReparticiones().subscribe({
       next: (res) => {
         this.reparticiones = res;
+        this.loading = false;
       },
       error: (err) => {
         console.error(err);
@@ -71,10 +74,10 @@ export class AgregarAlumnoComponent implements OnInit {
     this.alumnosService.agregarAlumno(this.alumnoParseado).subscribe({
       next: (res) => {
         this.loading = false;
+        this.dialogRef.close();
         this.mostrarSnackBar('¡Alumno agregado!');
       },
       error: (err) => {
-        this.loading = false;
         console.error(err);
         this.mostrarSnackBar('Ha ocurrido un error...');
       },
@@ -98,7 +101,7 @@ export class AgregarAlumnoComponent implements OnInit {
     this.snackBar.open(msg, '', {
       duration: 1500,
       horizontalPosition: 'center',
-      verticalPosition: 'bottom',
+      verticalPosition: 'top',
     });
   }
 }
